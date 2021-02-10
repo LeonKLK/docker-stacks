@@ -57,7 +57,8 @@ RUN git clone https://github.com/PAIR-code/facets.git && \
     fix-permissions "/home/${NB_USER}"
 
 # Import matplotlib the first time to build the font cache.
-ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
+ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/" && \
+    PYTHONPATH="/home/jovyan/git_pkg/nuSQuIDS/resources/python/bindings"
 
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
